@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiskInfo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240222220845_testin")]
-    partial class testin
+    [Migration("20240223092257_update1")]
+    partial class update1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,6 +52,10 @@ namespace DiskInfo.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("HostName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HostOs")
                         .IsRequired()
                         .HasColumnType("longtext");
 

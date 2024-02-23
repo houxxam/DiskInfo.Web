@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -31,7 +30,8 @@ namespace DiskInfo.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DiskHealth = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    LastCheckDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    LastCheckDate = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DiskSerialNumber = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     HostName = table.Column<string>(type: "longtext", nullable: false)

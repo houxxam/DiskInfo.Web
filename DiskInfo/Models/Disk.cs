@@ -12,5 +12,6 @@
         public string DiskSerialNumber { get; set; }
         public string HostName { get; set; }
         public string HostSerialNumber { get; set; }
+        public string HostOs { get; set; }
     }
 }

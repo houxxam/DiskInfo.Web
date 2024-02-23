@@ -52,6 +52,10 @@ namespace DiskInfo.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("HostOs")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("HostSerialNumber")
                         .IsRequired()
                         .HasColumnType("longtext");

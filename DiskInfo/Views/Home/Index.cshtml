@@ -10,13 +10,15 @@
             <thead>
                 <tr>
                     <th class="align-middle text-center" scope="col">#</th>
+                    <th class="align-middle text-center" scope="col">Pc Name</th>
+                    <th class="align-middle text-center" scope="col">Os</th>
                     <th class="align-middle text-center" scope="col">Name</th>
                     <th class="align-middle text-center" scope="col">Disk Type</th>
                     <th class="align-middle text-center" scope="col">Disk Space</th>
                     <th class="align-middle text-center" scope="col">Health</th>
                     <th class="align-middle text-center" scope="col">Date</th>
                     <th class="align-middle text-center" scope="col">Serial Number</th>
-                    <th class="align-middle text-center" scope="col">Pc Name</th>
+                    
                     <th class="align-middle text-center" scope="col">Pc serial Number</th>
                 </tr>
             </thead>
@@ -26,7 +28,9 @@
 
                     <tr class="align-middle text-center">
                         <th class="align-middle text-center" scope="row" class="align-middle">@item.Id</th>
-                        <td class="align-middle"><a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="text-center">@item.DiskName</a></td>
+                        <td class="align-middle text-center"><a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="text-center">@item.HostName</a></td>
+                        <td class="align-middle text-center">@item.HostOs</td>
+                        <td class="align-middle">@item.DiskName</td>
                         <td class="align-middle text-center">@item.DiskType</td>
                         <td class="align-middle text-center">
                             <div class="progress" style="background-color : #c1c1c1">
@@ -37,7 +41,7 @@
                         <td class="align-middle text-center">@item.DiskHealth</td>
                         <td class="align-middle text-center">@item.LastCheckDate</td>
                         <td class="align-middle text-center">@item.DiskSerialNumber</td>
-                        <td class="align-middle text-center">@item.HostName</td>
+                        
                         <td class="align-middle text-center">@item.HostSerialNumber</td>
                     </tr>
 

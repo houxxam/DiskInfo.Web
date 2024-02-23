@@ -3,12 +3,20 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
+   
+    
+    
 
     new DataTable('#dataTable',{
-        dom: 'Blfrtip',
-        pagingType: 'full_numbers',
-        buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'],
-        lengthMenu: [[25, 50, 100, -1], [25, 50, 100, 'All']],
-        pageLength: 25 // Set default page length
+        dom: 'lBfrtip',
+        // Configure the drop down options.
+        lengthMenu: [
+            [10, 25, 50, -1],
+            ['10 rows', '25 rows', '150 rows', 'Show all']
+        ],
+        buttons: [
+            'excel', 'print', 'colvis'
+        ],
+        order: [[7, 'desc']]
     });
 });

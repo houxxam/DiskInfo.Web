@@ -58,19 +58,20 @@ namespace Api.Controllers
             string _lastCheckDate,
             string _diskSerialNumber,
             string _hostName,
-            string _hostSerialNumber
+            string _hostSerialNumber,
+            string _hostOs
             )
         {
             var Data = await _context.Disks.FirstOrDefaultAsync(s => s.DiskSerialNumber == _diskSerialNumber);
 
 
-            if (_diskType.ToLower().Contains("ssd"))
+            if (_diskType.ToLower().Contains("rpm") && _diskType.ToLower().Contains("inconnu"))
             {
-                _diskType = "SSD";
+                _diskType = "HDD";
             }
             else
             {
-                _diskType = "HDD";
+                _diskType = "SSD";
             }
 
             if (Data == null)
@@ -85,7 +86,8 @@ namespace Api.Controllers
                     DiskSerialNumber = _diskSerialNumber,
                     LastCheckDate = _lastCheckDate,
                     HostName = _hostName,
-                    HostSerialNumber = _hostSerialNumber
+                    HostSerialNumber = _hostSerialNumber,
+                    HostOs = _hostOs
 
 
                 };
@@ -105,6 +107,7 @@ namespace Api.Controllers
                 Data.LastCheckDate = _lastCheckDate;
                 Data.HostName = _hostName;
                 Data.HostSerialNumber = _hostSerialNumber;
+                Data.HostOs = _hostOs;
 
                 _context.Update(Data);
                 _context.SaveChanges();
