@@ -1,0 +1,70 @@
+﻿@model DiskInfo.Models.Disk
+@{
+    ViewData["title"] = "Details";
+}
+<div class="container mt-5">
+    <div class="row">
+        <div class="bg-white col-md-6 col-sm-12 px-3 pt-3">
+            <div class="progress" style="background-color : #c1c1c1">
+                <div class="progress-bar @GetColor(@getPercentage(Model.DiskTotalSpace, Model.DiskFreeSpace))" role="progressbar" style=" width:@getPercentage(Model.DiskTotalSpace, Model.DiskFreeSpace)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+
+            </div>
+            <p class="text-center ">@Model.DiskFreeSpace GB free Of @Model.DiskTotalSpace GB </p>
+        </div>
+        
+    </div>
+    
+</div>
+<div class="container bg-white p-3 details mt-3">
+    <div class="details-pc-info d-flex flex-row justify-content-between col-4 border border-dark rounded p-3 bg-light mb-3">
+        <p><i class="fa-solid fa-desktop"></i>@Model.HostName</p>
+        <p><i class="fa-solid fa-qrcode"></i>@Model.HostSerialNumber</p>
+    </div>
+    <p><i class="fa-solid fa-circle-info"></i>@Model.DiskName</p>
+    <p><i class="fa-solid fa-hard-drive"></i>@Model.DiskType</p>
+    <p><i class="fa-solid fa-circle"></i>@Model.DiskTotalSpace GB</p>
+    <p><i class="fa-solid fa-circle-half-stroke"></i>@Model.DiskFreeSpace GB</p>
+    <p><i class="fa-solid fa-battery-half"></i>@Model.DiskHealth</p>
+    <p><i class="fa-solid fa-clock"></i>@Model.LastCheckDate</p>
+    <p><i class="fa-solid fa-barcode"></i>@Model.DiskSerialNumber</p>
+    
+    
+</div>
+
+@functions {
+    private int getPercentage(string total, string free)
+    {
+        // Remove non-numeric characters from total and free strings
+        string numericTotal = new string(total.Where(char.IsDigit).ToArray());
+        string numericFree = new string(free.Where(char.IsDigit).ToArray());
+
+        // Parse numeric strings to double
+        if (double.TryParse(numericTotal, out double totalValue) &&
+            double.TryParse(numericFree, out double freeValue))
+        {
+            // Calculate percentage
+            double percentage = (totalValue - freeValue) / totalValue * 100;
+            return (int)Math.Round(percentage);
+        }
+        else
+        {
+            // Handle parsing error (return a default value, throw an exception, etc.)
+            return 0; // Default value in case of parsing failure
+        }
+    }
+    private string GetColor(int val)
+    {
+        if (val <= 100 && val > 75)
+        {
+            return "bg-danger";
+        }
+        else if (val <= 79 && val > 50)
+        {
+            return "bg-warning";
+        }
+        else
+        {
+            return "bg-primary";
+        }
+    }
+}

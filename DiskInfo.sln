@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiskInfo", "DiskInfo\DiskInfo.csproj", "{BDD61C23-C910-4FAE-955C-9B70B38EC463}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDD61C23-C910-4FAE-955C-9B70B38EC463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD61C23-C910-4FAE-955C-9B70B38EC463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD61C23-C910-4FAE-955C-9B70B38EC463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD61C23-C910-4FAE-955C-9B70B38EC463}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {959F64C3-6CA7-42E6-A4C2-2C974D1A6ACB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DiskInfo.Models.Disk>
+@{
+    ViewData["Title"] = "DiskInfo";
+}
+<div class="data-title">hard disk list</div>
+<div class="mt-5 p-3 data-container">
+    @if (Model != null)
+    {
+        <table class="table table-striped" id="dataTable">
+            <thead>
+                <tr>
+                    <th class="align-middle text-center" scope="col">#</th>
+                    <th class="align-middle text-center" scope="col">Name</th>
+                    <th class="align-middle text-center" scope="col">Disk Type</th>
+                    <th class="align-middle text-center" scope="col">Disk Space</th>
+                    <th class="align-middle text-center" scope="col">Health</th>
+                    <th class="align-middle text-center" scope="col">Date</th>
+                    <th class="align-middle text-center" scope="col">Serial Number</th>
+                    <th class="align-middle text-center" scope="col">Pc Name</th>
+                    <th class="align-middle text-center" scope="col">Pc serial Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr class="align-middle text-center">
+                        <th class="align-middle text-center" scope="row" class="align-middle">@item.Id</th>
+                        <td class="align-middle"><a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="text-center">@item.DiskName</a></td>
+                        <td class="align-middle text-center">@item.DiskType</td>
+                        <td class="align-middle text-center">
+                            <div class="progress" style="background-color : #c1c1c1">
+                                <div class="progress-bar @GetColor(@getPercentage(@item.DiskTotalSpace, @item.DiskFreeSpace))" role="progressbar" style=" width:@getPercentage(@item.DiskTotalSpace, @item.DiskFreeSpace)%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            @item.DiskFreeSpace Free of @item.DiskTotalSpace
+                        </td>
+                        <td class="align-middle text-center">@item.DiskHealth</td>
+                        <td class="align-middle text-center">@item.LastCheckDate</td>
+                        <td class="align-middle text-center">@item.DiskSerialNumber</td>
+                        <td class="align-middle text-center">@item.HostName</td>
+                        <td class="align-middle text-center">@item.HostSerialNumber</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        
+    }
+    else
+    {
+        <div class="alert alert-warning text-center align-middle" role="alert">
+            no data available in table
+        </div>
+    }
+
+</div>
+
+
+@functions{
+    private int getPercentage(string total, string free)
+    {
+        // Remove non-numeric characters from total and free strings
+        string numericTotal = new string(total.Where(char.IsDigit).ToArray());
+        string numericFree = new string(free.Where(char.IsDigit).ToArray());
+
+        // Parse numeric strings to double
+        if (double.TryParse(numericTotal, out double totalValue) &&
+            double.TryParse(numericFree, out double freeValue))
+        {
+            // Calculate percentage
+            double percentage = (totalValue - freeValue) / totalValue * 100;
+            return (int)Math.Round(percentage);
+        }
+        else
+        {
+            // Handle parsing error (return a default value, throw an exception, etc.)
+            return 0; // Default value in case of parsing failure
+        }
+    }
+    private string GetColor(int val){
+        if(val<=100 && val > 75){
+            return "bg-danger";
+        }else if(val<=79 && val > 50){
+            return "bg-warning";
+        } else{
+            return "bg-primary";
+        }
+    }
+}
