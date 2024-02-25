@@ -30,7 +30,7 @@
                             <a class="nav-link" href="/DiskStats">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Statistics</a>
+                            <a class="nav-link" href="/Statistic">Statistics</a>
                         </li>
                     </ul>
                     
@@ -46,7 +46,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - DiskInfo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - DiskInfo 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -62,6 +62,8 @@
     <script src="~/lib/datatable/buttons.print.min.js"></script>
     <script src="~/lib/datatable/buttons.colvis.min.js"></script>
     <!-- DataTables-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <script src="~/js/all.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

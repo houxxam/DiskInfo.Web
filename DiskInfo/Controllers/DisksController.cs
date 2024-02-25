@@ -116,7 +116,21 @@ namespace Api.Controllers
 
         }
 
+        [HttpGet]
+        [Route("hddCount")]
+        public IActionResult GetHddCount()
+        {
+            var count = _context.Disks.Count(d => d.DiskType.ToLower() == "hdd");
+            return Ok(count);
+        }
 
+        [HttpGet]
+        [Route("ssdCount")]
+        public IActionResult GetSsdCount()
+        {
+            var count = _context.Disks.Count(d => d.DiskType.ToLower() == "ssd");
+            return Ok(count);
+        }
 
 
     }
