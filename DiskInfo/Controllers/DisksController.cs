@@ -65,7 +65,7 @@ namespace Api.Controllers
             var Data = await _context.Disks.FirstOrDefaultAsync(s => s.DiskSerialNumber == _diskSerialNumber);
 
 
-            if (_diskType.ToLower().Contains("rpm") && _diskType.ToLower().Contains("inconnu"))
+            if (_diskType.ToLower().Contains("rpm") || _diskType.ToLower().Contains("inconnu"))
             {
                 _diskType = "HDD";
             }
